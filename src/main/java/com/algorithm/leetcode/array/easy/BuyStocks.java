@@ -1,4 +1,4 @@
-package com.algorithm.leetcode.array;
+package com.algorithm.leetcode.array.easy;
 
 /**
  * leetcode121
