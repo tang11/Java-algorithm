@@ -2,6 +2,7 @@ package com.algorithm.leetcode.tree.depthFirstSearch;
 
 import com.algorithm.leetcode.tree.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,17 @@ import java.util.List;
  */
 public class BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {
-        return null;
+        List<Integer> res = new ArrayList<>();
+        leftRoot(root, res);
+        return res;
+    }
+
+    public void leftRoot(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        leftRoot(root.left, res);
+        res.add(root.val);
+        leftRoot(root.right, res);
     }
 }

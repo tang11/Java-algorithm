@@ -10,12 +10,14 @@ import com.algorithm.leetcode.tree.TreeNode;
 public class MaximumDepthOfBinaryTree {
 
     public static int maxDepth(TreeNode root) {
-        if(root == null) {
+        int max = 0;
+        if (root == null) {
             return 0;
         }
-        int leftHeight = maxDepth(root.left);
-        int rightHeight = maxDepth(root.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        max = Math.max(leftDepth, rightDepth) + 1;
+        return max;
     }
 
     public static void main(String[] args) {
