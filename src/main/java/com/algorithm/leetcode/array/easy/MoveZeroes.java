@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class MoveZeroes {
     /**
-     * 双指针,把不为0的移到前面，后面的补0，不太符合题意移动0
+     * 双指针通用解法,把不为0的移到前面，后面的补0，不太符合题意移动0
      * @param nums
      * @return
      */
