@@ -5,6 +5,6 @@ package com.algorithm.leetcode.String;
  */
 public class LengthOfLastWord {
     public int lengthOfLastWord(String s) {
-
+        return 0;
     }
 }

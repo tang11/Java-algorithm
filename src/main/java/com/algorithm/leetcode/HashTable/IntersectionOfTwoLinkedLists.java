@@ -3,6 +3,7 @@ package com.algorithm.leetcode.HashTable;
 import com.algorithm.leetcode.commonEntity.ListNode;
 
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * leetcode160
