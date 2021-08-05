@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * @author shenli
+ * leetcode111
  * @date 2021/8/4
  */
 public class MinimumDepthOfBinaryTree {
@@ -27,6 +27,11 @@ public class MinimumDepthOfBinaryTree {
         return minDepth + 1;
     }
 
+    /**
+     * 最小深度为什么要增加判断足有深度==0的情况
+     * @param root
+     * @return
+     */
     public int minDepth1(TreeNode root) {
         if(root == null) {
             return 0;
