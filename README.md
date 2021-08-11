@@ -1,2 +1,2 @@
 # Java-algorithm
-algorithm
+algorithm in java
