@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  *leetcode783
- * @date 2021/8/11
  */
 public class MinimumDistanceBetweenBSTNodes {
 
