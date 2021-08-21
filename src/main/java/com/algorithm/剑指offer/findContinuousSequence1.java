@@ -28,7 +28,6 @@ public class findContinuousSequence1 {
                 }
             }
         }
-
         return null;
     }
 }
