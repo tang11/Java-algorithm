@@ -27,6 +27,7 @@ public class findContinuousSequence1 {
                     temp.add(j);
                 }
             }
+
         }
         return null;
     }
