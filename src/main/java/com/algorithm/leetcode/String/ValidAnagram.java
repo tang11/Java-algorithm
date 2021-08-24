@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/8/10
  */
 public class ValidAnagram {

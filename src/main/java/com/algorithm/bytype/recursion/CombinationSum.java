@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/8/23
  */
 public class CombinationSum {

@@ -4,11 +4,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/8/23
  */
 public class Permutations {
-    public List<List<Integer>> permute(int[] nums) {
+
+    /**
+     * @param nums
+     * @return
+     */
+    public static List<List<Integer>> permute1(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack1(res, new ArrayList<>(), nums);
+        return res;
+    }
+
+    public static void backtrack1(List<List<Integer>> res, List<Integer> tempList, int[] nums) {
+        System.out.println("递归---->1" + tempList.toString());
+        if (tempList.size() == nums.length) {
+            res.add(new ArrayList<>(tempList));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println("递归------>2");
+
+            if (tempList.contains(nums[i])) {
+                System.out.println("递归------>3");
+
+                continue;
+            }
+            tempList.add(nums[i]);
+            System.out.println("递归-------->4");
+
+            backtrack1(res, tempList, nums);
+            System.out.println("递归--------->5" + tempList.toString());
+
+            tempList.remove(tempList.size() - 1);
+            System.out.println("递归------------->6" + tempList.toString());
+
+        }
+
+    }
+
+
+    public static List<List<Integer>> permute2(int[] nums) {
         int len = nums.length;
         List<List<Integer>> res = new ArrayList<>();
         if (len == 0) {
@@ -16,11 +55,11 @@ public class Permutations {
         }
         boolean[] used = new boolean[len];
         List<Integer> path = new ArrayList<>();
-        dfs(nums, len, 0, path, used, res);
+        backtrack2(nums, len, 0, path, used, res);
         return res;
     }
 
-    public void dfs(int[] num, int len, int depth, List<Integer> path, boolean[] used, List<List<Integer>> res) {
+    public static void backtrack2(int[] num, int len, int depth, List<Integer> path, boolean[] used, List<List<Integer>> res) {
         if (depth == len) {
             //参数传递是 值传递，对象类型变量在传参的过程中，
             // 复制的是变量的地址。这些地址被添加到 res 变量，但实际上指向的是同一块内存地址
@@ -35,7 +74,7 @@ public class Permutations {
                 used[i] = true;
                 System.out.println("  递归之前 => " + path);
 
-                dfs(num, len, depth + 1, path, used, res);
+                backtrack2(num, len, depth + 1, path, used, res);
                 // 注意：下面这两行代码发生 「回溯」，回溯发生在从 深层结点 回到 浅层结点 的过程，代码在形式上和递归之前是对称的
                 used[i] = false;
                 path.remove(path.size() - 1);
@@ -45,7 +84,16 @@ public class Permutations {
         }
     }
 
-    public  static List<List<Integer>> permute2(int[] nums) {
+    public static void main(String[] args) {
+//        int[] nums = {1, 2, 3};
+//        System.out.println("+++"+permute1(nums));
+        int[] nums = {1, 2, 3};
+        System.out.println("+++"+permute2(nums));
+
+    }
+
+
+    public static List<List<Integer>> permute3(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         backtrack(res, new ArrayList<>(), nums);
         return res;
@@ -58,22 +106,15 @@ public class Permutations {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (tempList.contains(nums[i])){
+            if (tempList.contains(nums[i])) {
                 continue;
             }
             tempList.add(nums[i]);
-            backtrack(res, tempList,nums);
-            tempList.remove(tempList.size()-1);
+            backtrack(res, tempList, nums);
+            tempList.remove(tempList.size() - 1);
         }
 
     }
 
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        Permutations solution = new Permutations();
-        List<List<Integer>> lists = solution.permute(nums);
-        System.out.println("+++"+permute2(nums));
-        System.out.println(lists);
-    }
 
 }
