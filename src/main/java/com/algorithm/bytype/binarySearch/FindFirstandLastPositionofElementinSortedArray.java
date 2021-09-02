@@ -1,7 +1,7 @@
 package com.algorithm.bytype.binarySearch;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/8/31
  */
 public class FindFirstandLastPositionofElementinSortedArray {
