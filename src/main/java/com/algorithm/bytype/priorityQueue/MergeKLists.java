@@ -1,4 +1,4 @@
-package com.algorithm.bytype.priorrityQueue;
+package com.algorithm.bytype.priorityQueue;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
