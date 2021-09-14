@@ -1,11 +1,11 @@
-package com.algorithm.bytype.pointerManipulation;
+package com.algorithm.bytype.slidingWindow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/9/7
  */
 public class MaxSlidingWindow {

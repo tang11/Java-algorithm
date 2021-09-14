@@ -1,7 +1,7 @@
 package com.algorithm.bytype.pointer;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/9/7
  */
 public class ReOrderList {
