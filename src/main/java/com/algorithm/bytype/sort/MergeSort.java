@@ -1,7 +1,7 @@
 package com.algorithm.bytype.sort;
 
 /**
- * @author shenli
+ * @authortanglijuan
  * @date 2021/9/14
  */
 public class MergeSort {
