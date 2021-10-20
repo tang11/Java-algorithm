@@ -32,26 +32,29 @@ public class Permutations {
             tempList.remove(tempList.size() - 1);
         }
     }
+
     public List<List<Integer>> permute2(int[] nums) {
-        List<List<Integer>>  res = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
         backtrack2(res, new ArrayList<>(), nums);
         return res;
     }
-    public void backtrack2(List<List<Integer>>  res, List<Integer> tempList,int[] nums){
-        if(tempList.size()== nums.length){
+
+    public void backtrack2(List<List<Integer>> res, List<Integer> tempList, int[] nums) {
+        if (tempList.size() == nums.length) {
             res.add(new ArrayList<>(tempList));
             return;
         }
-        for(int i =0;i <nums.length; i++){
-            if(tempList.contains(nums[i])){
+        for (int i = 0; i < nums.length; i++) {
+            if (tempList.contains(nums[i])) {
                 continue;
             }
             tempList.add(nums[i]);
-            backtrack2(res,tempList,nums);
-            tempList.remove(tempList.size()-1);
+            backtrack2(res, tempList, nums);
+            tempList.remove(tempList.size() - 1);
         }
 
     }
+
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
