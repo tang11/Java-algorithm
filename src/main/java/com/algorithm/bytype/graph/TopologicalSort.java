@@ -1,9 +1,9 @@
 package com.algorithm.bytype.graph;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author tanglijuan
@@ -11,38 +11,40 @@ import java.util.List;
  */
 public class TopologicalSort {
     /**
-     * Get topological ordering of the input directed graph 
-     * @param n number of nodes in the graph
+     * Get topological ordering of the input directed graph
+     *
+     * @param n             number of nodes in the graph
      * @param adjacencyList adjacency list representation of the input directed graph
-     * @return topological ordering of the graph stored in an List<Integer>. 
+     * @return topological ordering of the graph stored in an List<Integer>.
      */
-    public List<Integer> topologicalSort(int n, int[][] adjacencyList) {
-        List<Integer> topoRes = new ArrayList<>();
-        int[] inDegree = new int[n];
-        for (int[] parent : adjacencyList) {
-            for (int child : parent) {
-                inDegree[child]++;
+    public static List<Integer> topologicalSort(int n, int[][] adjacencyList) {
+        List<Integer> res = new ArrayList<>();
+        int[] inDegrees = new int[n];
+        for (int[] tmp : adjacencyList) {
+                inDegrees[tmp[1]]++;
+        }
+        Queue<Integer> queue = new LinkedList();
+        for (int i = 0; i < n; i++) {
+            if (inDegrees[i] ==0){
+                queue.offer(i);
             }
         }
-
-        Deque<Integer> deque = new ArrayDeque<>();
-
-        // start from nodes whose indegree are 0
-        for (int i = 0; i < n; i++) {
-            if (inDegree[i] == 0) deque.offer(i);
-        }
-
-        while (!deque.isEmpty()) {
-            int curr = deque.poll();
-            topoRes.add(curr);
-            for (int child : adjacencyList[curr]) {
-                inDegree[child]--;
-                if (inDegree[child] == 0) {
-                    deque.offer(child);
+        while (!queue.isEmpty()){
+            int cur = queue.poll();
+            res.add(cur);
+            for (int i: adjacencyList[cur]) {
+                inDegrees[i]--;
+                if (inDegrees[i]==0){
+                    queue.offer(i);
                 }
             }
         }
+        return queue.size() ==n? res: new ArrayList<>();
+    }
 
-        return topoRes.size() == n ? topoRes : new ArrayList<>();
+    public static void main(String[] args) {
+        int n =5;
+        int[][] adj = new int[][]{{0,1},{2,3},{3,4}};
+        System.out.println(topologicalSort(n,adj));
     }
 }

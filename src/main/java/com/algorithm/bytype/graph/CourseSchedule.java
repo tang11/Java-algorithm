@@ -8,75 +8,47 @@ import java.util.*;
  */
 public class CourseSchedule {
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<List<Integer>> graphMapping = new ArrayList<>();
-        int[] flags = new int[numCourses];
+        HashMap<Integer, List<Integer>> map = new HashMap<>(numCourses);
+        HashMap<Integer, Integer> inDegrees = new HashMap<>();
         for (int i = 0; i < numCourses; i++) {
-            graphMapping.add(new ArrayList<>());
+            map.put(i, new ArrayList<>());
+            inDegrees.put(i, 0);
         }
         for (int[] tmp : prerequisites) {
-            graphMapping.get(tmp[1]).add(tmp[0]);
+            //(3,0)要学3先学0
+            int cur = tmp[1];
+            int next = tmp[0];
+            inDegrees.put(next, inDegrees.get(next) + 1);
+            map.get(cur).add(next);
         }
-        for (int i = 0; i < numCourses; i++) {
-            if (!dfs(graphMapping, flags, i)) {
-                return false;
-            }
-        }
-        return true;
-
-    }
-
-    public static boolean dfs(List<List<Integer>> graphMapping, int[] flags, int j) {
-        if (flags[j] == 1) {
-            return false;
-        }
-        if (flags[j] == -1) {
-            return true;
-        }
-        flags[j] = 1;
-        for (Integer i : graphMapping.get(j)) {
-            if (!dfs(graphMapping, flags, i)) {
-                return false;
-            }
-
-        }
-        flags[j] = -1;
-        return true;
-
-    }
-
-    public static boolean canFinish1(int numCourses, int[][] prerequisites) {
-        int[] indegrees = new int[numCourses];
-        List<List<Integer>> graphMapping = new ArrayList<>();
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
-            graphMapping.add(new ArrayList<>());
-        }
-        for (int[] cp : prerequisites) {
-            indegrees[cp[0]]++;
-            graphMapping.get(cp[1]).add(cp[0]);
-        }
-        for (int i = 0; i < numCourses; i++) {
-            if (indegrees[i] == 0) {
-                queue.add(i);
+            if (inDegrees.get(i) == 0) {
+                queue.offer(i);
             }
         }
-            while (!queue.isEmpty()) {
-                int pre = queue.poll();
-                numCourses--;
-                for (int cur : graphMapping.get(pre)) {
-                    if (--indegrees[cur] == 0) {
-                        queue.add(cur);
-                    }
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            List<Integer> successorList = map.get(node);
+            for (Integer tmp : successorList) {
+                inDegrees.put(tmp, inDegrees.get(tmp) - 1);
+                if (inDegrees.get(tmp) == 0) {
+                    queue.offer(tmp);
                 }
             }
-        return numCourses == 0;
+        }
+        for (int tmp : inDegrees.keySet()) {
+            if (inDegrees.get(tmp) != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
-        int numCourses = 4;
-        int[][] prerequisites = new int[][]{{1, 0}, {2, 3}};
+        int numCourses = 6;
+        int[][] prerequisites = new int[][]{{3, 0}, {3, 1}, {4, 1}, {4, 2}, {5, 3}, {5, 4}};
         System.out.println(canFinish(numCourses, prerequisites));
-        System.out.println(canFinish1(numCourses, prerequisites));
 
     }
 }
