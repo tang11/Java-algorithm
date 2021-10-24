@@ -14,6 +14,19 @@ public class numTrees {
         return (int) num;
     }
 
+    public static int numTrees1(int n) {
+        int[] num = new int[n + 1];
+        num[0] = 1;
+        num[1] = 1;
+
+        for (int i = 2; i <= n; ++i) {
+            for (int j = 1; j <= i; ++j) {
+                num[i] += num[j - 1] * num[i - j];
+            }
+        }
+        return num[n];
+    }
+
     public static void main(String[] args) {
         int n1 = 1;
         int n2=2;
@@ -21,6 +34,9 @@ public class numTrees {
         System.out.println(numTrees(n1));
         System.out.println(numTrees(n2));
         System.out.println(numTrees(n3));
+        System.out.println(numTrees1(n1));
+        System.out.println(numTrees1(n2));
+        System.out.println(numTrees1(n3));
 
     }
 
