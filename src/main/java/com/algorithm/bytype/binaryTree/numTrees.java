@@ -1,7 +1,7 @@
 package com.algorithm.bytype.binaryTree;
 
 /**
- * @author shenli
+ * @authortanglijuan
  * @date 2021/10/24
  */
 public class numTrees {
