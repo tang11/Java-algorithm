@@ -118,15 +118,60 @@ public class CourseScheduleII {
 //        }
 //    }
 //
-//    public static void main(String[] args) {
-//        int numCourses = 2;
-//        int[][] prerequisites = new int[][]{{1, 0}};
-//        System.out.println(Arrays.toString(findOrder(numCourses, prerequisites)));
-//        System.out.println(Arrays.toString(findOrderDFS(numCourses, prerequisites)));
-//        int numCourses2 = 4;
-//        int[][] prerequisites2 = new int[][]{{1, 0}, {2, 0}, {3, 1}, {3, 2}};
-//        System.out.println(Arrays.toString(findOrder(numCourses2, prerequisites2)));
-//        //   System.out.println(Arrays.toString(findOrderDFS(numCourses2, prerequisites2)));
-//
-//    }
+
+    public static int[] findOrder(int numCourses, int[][] prerequisites) {
+        Map<Integer,List<Integer>> adjMap = new HashMap<>();
+        Map<Integer,Integer> inDegrees = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i< numCourses;i++) {
+            inDegrees.put(i,0);
+            adjMap.put(i,new ArrayList<>());
+        }
+        for(int[] tmp: prerequisites) {
+            int cur = tmp[1];
+            int next = tmp[0];
+            inDegrees.put(next, inDegrees.get(next)+1);
+            adjMap.get(cur).add(next);
+        }
+
+        Queue<Integer> queue = new LinkedList<Integer>();
+        for(int j=0;j< numCourses;j++) {
+            if(inDegrees.get(j) == 0) {
+                queue.offer(j);
+                res.add(j);
+            }
+        }
+        while(!queue.isEmpty()){
+            int cur = queue.poll();
+            List<Integer> adjEdge = adjMap.get(cur);
+            for(int tmp:adjEdge) {
+                int inDegree = inDegrees.get(tmp)-1;
+                inDegrees.put(tmp,inDegree);
+                if(inDegree ==0) {
+                    queue.offer(tmp);
+                    res.add(tmp);
+                }
+            }
+
+        }
+        if(res.size()==numCourses){
+            int[] result = new int[numCourses];
+            for(int i:res){
+                result[i]=res.get(i);
+            }
+            return result;
+        }
+        return new int[0];
+    }
+    public static void main(String[] args) {
+        int numCourses = 2;
+        int[][] prerequisites = new int[][]{{1, 0}};
+        System.out.println(Arrays.toString(findOrder(numCourses, prerequisites)));
+
+        int numCourses2 = 4;
+        int[][] prerequisites2 = new int[][]{{1, 0}, {2, 0}, {3, 1}, {3, 2}};
+        System.out.println(Arrays.toString(findOrder(numCourses2, prerequisites2)));
+        //   System.out.println(Arrays.toString(findOrderDFS(numCourses2, prerequisites2)));
+
+    }
 }
