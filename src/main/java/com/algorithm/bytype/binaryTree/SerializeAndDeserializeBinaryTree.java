@@ -1,6 +1,5 @@
 package com.algorithm.bytype.binaryTree;
 
-import com.algorithm.leetcode.tree.Node;
 import com.algorithm.leetcode.tree.TreeNode;
 
 import java.util.*;
@@ -13,6 +12,7 @@ public class SerializeAndDeserializeBinaryTree {
 
     /**
      * DFS
+     * 时间复杂度 O(n), 空间复杂度O(n)
      *
      * @param root
      * @return
@@ -75,14 +75,14 @@ public class SerializeAndDeserializeBinaryTree {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize1(String data) {
-        if(data ==""){
+        if (data == "") {
             return null;
         }
         String[] str = data.split(",");
         Queue<String> deque = new LinkedList<>(Arrays.asList(str));
         Queue<TreeNode> nodes = new LinkedList<>();
         String rootVal = deque.poll();
-        if(rootVal== "X"){
+        if (rootVal.equals("X")) {
             return null;
         }
         TreeNode root = new TreeNode(Integer.parseInt(rootVal));
@@ -127,7 +127,7 @@ public class SerializeAndDeserializeBinaryTree {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize2(String data) {
-        if (data == "") {
+        if (data.equals("")) {
             return null;
         }
         Queue<String> nodes = new ArrayDeque<>(Arrays.asList(data.split(",")));
