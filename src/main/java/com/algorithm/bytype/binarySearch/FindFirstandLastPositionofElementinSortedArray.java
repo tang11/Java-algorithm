@@ -1,5 +1,7 @@
 package com.algorithm.bytype.binarySearch;
 
+import java.util.Arrays;
+
 /**
  * @author tanglijuan
  * @date 2021/8/31
@@ -55,8 +57,41 @@ public class FindFirstandLastPositionofElementinSortedArray {
         }
         return ans;
     }
+
+
+    public static int[] searchRange3(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length-1;
+        int i = -1;;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(nums[mid]== target){
+                i=mid;
+                break;
+            }else if(nums[mid] > target){
+                end = mid-1;
+            }else{
+                start = mid+1;
+            }
+        }
+        if(i == -1) {
+            return new int[]{-1,-1};
+        }
+        int startIndex = i;
+        while(startIndex>=0 && nums[startIndex]==target) {
+            startIndex--;
+        }
+        int endIndex = i;
+        while(endIndex< nums.length&& nums[endIndex] == target) {
+            endIndex++ ;
+
+        }
+        return new int[]{startIndex+1,endIndex-1};
+    }
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 3};
-        System.out.println(searchRange(nums, 1).toString());
+        int[] nums = new int[]{1};
+        int[] nums1 = new int[]{5,7,7,8,8,10};
+       // System.out.println(searchRange(nums, 1).toString());
+        System.out.println(Arrays.toString(searchRange3(nums ,1)));
     }
 }
