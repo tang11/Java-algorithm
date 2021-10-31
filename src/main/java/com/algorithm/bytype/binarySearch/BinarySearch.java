@@ -45,23 +45,6 @@ public class BinarySearch {
         return nums[start] == target ? start : -1;
     }
 
-    public static int findNumberIndex2(int[] nums, int target) {
-        int start = 0;
-        int end = nums.length;
-        while (start < end) {
-            int mid = start + (end - 1) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] > target) {
-                end = mid - 1;
-            } else if (nums[mid] < target) {
-                start = mid + 1;
-            }
-        }
-
-        return -1;
-    }
-
 
     public static int findLeftIndex(int[] nums, int target) {
         if (nums.length == 0) {
@@ -83,7 +66,7 @@ public class BinarySearch {
             return -1;
         }
 
-        return nums[left] == target ? target : -1;
+        return nums[left] == target ? left : -1;
     }
 
     public static int findLeftIndex1(int[] nums, int target) {
@@ -94,20 +77,39 @@ public class BinarySearch {
             int mid = left + (right - left) / 2;
             if (nums[mid] < target) {
                 //搜索区间为【mid+1,right】
-                left = mid +1;
-            }else if (nums[mid] > target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
                 //搜索区间为【left,mid-1】
-                right = mid-1;
-            }else if (nums[mid] == target) {
+                right = mid - 1;
+            } else if (nums[mid] == target) {
                 //搜索右侧边界
-                right = mid-1;
+                right = mid - 1;
             }
         }
         //检查出界情况
-        if (left>nums.length || nums[left] != target) {
+        if (left > nums.length || nums[left] != target) {
             return -1;
         }
         return left;
+    }
+
+    public static int findRightIndex(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+        if (left == 0) {
+            return -1;
+        }
+        return nums[left - 1] == target ? left - 1 : -1;
     }
 
     public static void main(String[] args) {
@@ -116,9 +118,13 @@ public class BinarySearch {
         int target = 5;
         System.out.println(findNumberIndex(nums, target));
         System.out.println(findNumberIndex1(nums, target));
-        System.out.println(findNumberIndex2(nums, target));
+        System.out.println(findRightIndex(nums, target));
+
 
         int[] nums1 = new int[]{2, 3, 5, 7};
         System.out.println("lefIndex" + findLeftIndex(nums1, 8));
+        System.out.println("rightIndex" + findRightIndex(nums1, 8));
+        System.out.println("lefIndex" + findLeftIndex(nums, target));
+        System.out.println("rightIndex" + findRightIndex(nums, target));
     }
 }
