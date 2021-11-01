@@ -1,5 +1,6 @@
 package com.algorithm;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -7,18 +8,21 @@ import java.util.PriorityQueue;
  * @date 2021/9/6
  */
 public class KthLargestElementInAnArray {
-    public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(k);
-        for (int i =0; i< k; i++) {
-            minHeap.add(nums[i]);
-        }
-        for(int i = k;i< nums.length; i++) {
-            Integer topEl = minHeap.peek();
-            if(nums[i] > topEl) {
-                minHeap.poll();
-                minHeap.offer(nums[i]);
-            }
-        }
-        return minHeap.peek();
+
+    //暴力求解 O(NlogN)
+    public int findKthLargest(int[] nums, int k){
+        int len = nums.length;
+        Arrays.sort(nums);
+        return nums[len -k];
+    }
+    public int findKthLargest1(int[] nums, int k) {
+      PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+      for (int num: nums) {
+          priorityQueue.offer(num);
+          if (priorityQueue.size()> k){
+              priorityQueue.poll();
+          }
+      }
+      return priorityQueue.peek();
     }
 }

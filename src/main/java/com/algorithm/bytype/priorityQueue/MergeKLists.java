@@ -26,35 +26,24 @@ public class MergeKLists {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists == null || lists.length == 0) {
-            return null;
+        PriorityQueue<ListNode> heap = new PriorityQueue<>();
+        for (ListNode node : lists) {
+            if (node != null) {
+                heap.offer(node);
+            }
         }
-        PriorityQueue<ListNode> priorityQueue = new PriorityQueue<>(lists.length, new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode l1, ListNode l2) {
-                if (l1.val < l2.val) {
-                    return -1;
-                } else if (l1.val == l2.val) {
-                    return 0;
-                } else {
-                    return 1;
+            ListNode dummyHead = new ListNode(0);
+            ListNode tail = dummyHead;
+            while (!heap.isEmpty()) {
+                ListNode minNode = heap.poll();
+                tail.next = minNode;
+                tail = minNode;
+                if (minNode.next != null) {
+                    heap.offer(minNode.next);
                 }
             }
-        });
-        ListNode dummy = new ListNode(0);
-        ListNode p = dummy;
-        for (ListNode node : lists){
-            if (node != null) {
-                priorityQueue.add(node);
-            }
-        }
-        while(!priorityQueue.isEmpty()) {
-            p.next = priorityQueue.poll();
-            p = p.next;
-            if (p.next != null) {
-                priorityQueue.add(p.next);
-            }
-        }
-        return  dummy.next;
+            return  dummyHead.next;
+
+
     }
 }
