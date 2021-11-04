@@ -12,17 +12,40 @@ import java.util.Map;
  */
 public class LengthOfLongestSubstring {
     public static int lengthOfLongestSubstring(String s) {
-        Map<Character,Integer> map  = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         int maxLen = 0;
-        int left =0;
-        for (int i =0;i< s.length();i++){
-            if(map.containsKey(s.charAt(i))) {
-                left = Math.max(left, map.get(s.charAt(i)) +1);
+        int left = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
             }
-            map.put(s.charAt(i),i);
-            maxLen = Math.max(maxLen,i-left+1);
+            map.put(s.charAt(i), i);
+            maxLen = Math.max(maxLen, i - left + 1);
         }
         return maxLen;
+    }
+
+
+    public int lengthOfLongestSubstring1(String s) {
+        int left = 0;
+        int right = 0;
+        HashMap<Character, Integer> window = new HashMap<>();
+        int res = 0;
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            window.put(c, window.getOrDefault(c, 0) + 1);
+            right++;
+            //如果window中出现重复字符，开始移动left缩小窗口
+            while (window.get(c) > 1) {
+                char c1 = s.charAt(left);
+                if (window.containsKey(c1)) {
+                    window.put(c1, window.get(c1) - 1);
+                }
+                left++;
+            }
+            res = Math.max(res, right - left);
+        }
+        return res;
     }
 
     public static void main(String[] args) {
