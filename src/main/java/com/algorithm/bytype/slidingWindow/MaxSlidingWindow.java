@@ -1,8 +1,6 @@
 package com.algorithm.bytype.slidingWindow;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author tanglijuan
@@ -10,61 +8,31 @@ import java.util.List;
  */
 public class MaxSlidingWindow {
     public static int[] maxSlidingWindow(int[] nums, int k) {
-        List<Integer> list = new ArrayList<>();
-        int start = 0;
-        int end = k - 1;
-        int i = start;
-        int maxValue = Integer.MIN_VALUE;
-        while (i <= end) {
-            if (nums[i] > maxValue) {
-                maxValue = nums[i];
+        int left=0;
+        int right =k;
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>(k-1,Collections.reverseOrder());
+        HashMap<Integer,Integer> window = new HashMap<Integer,Integer>();
+        int[] res =new int[nums.length -k+1];
+        for(int i=0;i<k;i++) {
+            queue.offer(nums[i]);
+            window.put(nums[i],i);
+        }
+        int index =0;
+        while(right< nums.length) {
+            Integer temp =  queue.peek();
+            res[index] =temp;
+            if(window.get(temp)==left) {
+                queue.remove();
+                queue.offer(nums[right]);
+            }
+            window.put(nums[right],right);
+            right++;
+            left++;
+            index++;
 
-            }
-            i++;
-        }
-        list.add(maxValue);
-        start++;
-        end++;
-        while (end < nums.length) {
-            if (nums[end] > maxValue) {
-                maxValue = nums[end];
-            }
-            list.add(maxValue);
-            end++;
-        }
-        int[] res = new int[list.size()];
-        for (int j = 0; j < list.size(); j++) {
-            res[j] = list.get(j);
         }
         return res;
     }
-
-
-    public static int[] maxSlidingWindow1(int[] nums, int k) {
-        if(nums == null || nums.length ==0 ) {
-            return null;
-        }
-        int[] result = new int[nums.length-k+1];
-        int max = Integer.MIN_VALUE;
-        for(int i =0; i< k;i++) {
-            if(nums[i] > max) {
-                max = nums[i];
-            }
-        }
-        result[0] = max;
-        int index = 1;
-        for(int j = k;j< nums.length;j++) {
-            if(nums[j] > max) {
-                max = nums[j];
-            }
-            result[index] = max;
-            index++;
-        }
-        return result;
-
-    }
-
-
     public static void main(String[] args) {
 //        int[] nums = new int[]{1, 3, -1, -3, 5, 3, 6, 7};
 //        int k = 3;
@@ -74,6 +42,7 @@ public class MaxSlidingWindow {
 //        System.out.println(Arrays.toString(maxSlidingWindow(nums1,k1)));
         int[] nums = new int[]{1, 3, -1, -3, 5, 3, 6, 7};
         int k = 3;
-        System.out.println(Arrays.toString(maxSlidingWindow1(nums, k)));
+        //[3,3,5,5,6,7]
+        System.out.println(Arrays.toString(maxSlidingWindow(nums, k)));
     }
 }

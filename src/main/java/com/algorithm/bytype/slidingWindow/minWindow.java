@@ -114,8 +114,8 @@ public class minWindow {
         String t = "ABC";
         String s1 = "a";
         String t1 = "aa";
-//        System.out.println(minWindow(s, t));
-//        System.out.println(minWindow(s1, t1));
+        System.out.println(minWindow(s, t));
+        System.out.println(minWindow(s1, t1));
 
         String s2 = "cbaebabacd";
         String p2 = "abc";

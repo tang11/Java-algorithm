@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author shenli
+ * @author tanglijuan 438
  * @date 2021/11/4
  */
 public class FindAnagrams {
@@ -43,17 +43,16 @@ public class FindAnagrams {
                 // 就把起始索引 left 加入结果
                 if (right - left == p.length()) {
                     res.add(left);
-//                    start = left;
-//                    len = right - left;
                 }
                 char d = s.charAt(left);
+                left++;
                 if (need.containsKey(d)) {
-                    window.put(d, window.getOrDefault(d, 0) - 1);
-                    if (window.get(d) < need.get(d)) {
+                    if (window.get(d) .equals( need.get(d))) {
                         valid--;
                     }
+                    window.put(d,window.getOrDefault(d,0)-1);
                 }
-                left++;
+
             }
         }
         return res;
