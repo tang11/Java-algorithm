@@ -20,7 +20,7 @@ public class SortedArrayToBST {
             return null;
         }
         int mid = (left + right) / 2;
-        TreeNode root = new TreeNode(mid);
+        TreeNode root = new TreeNode(nums[mid]);
         root.left = buildTree(nums, left, mid - 1);
         root.right = buildTree(nums, mid + 1, right);
         return root;
