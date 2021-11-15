@@ -3,7 +3,7 @@ package com.algorithm.leetcode.tree.tree.medium;
 import com.algorithm.leetcode.tree.TreeNode;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/11/10
  */
 public class InsertIntoBST {
