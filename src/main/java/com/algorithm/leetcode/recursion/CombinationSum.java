@@ -30,7 +30,6 @@ public class CombinationSum {
                 path.add(candidates[i]);
                 backtrack(res,path,candidates,target-candidates[i],i);
                 path.remove(path.size()-1);
-            }
         }
     }
 }
