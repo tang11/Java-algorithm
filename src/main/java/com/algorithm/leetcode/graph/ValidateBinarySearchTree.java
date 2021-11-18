@@ -6,6 +6,6 @@ package com.algorithm.leetcode.graph;
  */
 public class ValidateBinarySearchTree {
     public boolean isValidBST(TreeNode root) {
-
+        return false;
     }
 }

@@ -9,6 +9,6 @@ package com.algorithm.leetcode.graph;
  */
 public class CourseSchedule {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-
+        return  null;
     }
 }
