@@ -3,7 +3,7 @@ package com.algorithm.leetcode.tree.easy;
 import com.algorithm.leetcode.tree.TreeNode;
 
 /**
- * @author shenli
+ * @authortanglijuan
  * @date 2021/11/22
  */
 public class InvertTree {
