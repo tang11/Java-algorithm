@@ -3,7 +3,7 @@ package com.algorithm.leetcode.tree.easy;
 import com.algorithm.leetcode.tree.TreeNode;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/11/23
  */
 public class SumOfLeftLeaves {
