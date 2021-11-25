@@ -3,6 +3,7 @@ package com.algorithm.leetcode.tree.easy;
 import com.algorithm.leetcode.tree.TreeNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -54,5 +55,14 @@ public class FindMode {
             res.clear();
             res.add(base);
         }
+    }
+
+    public static void main(String[] args) {
+        HashMap <Character,Integer> map = new HashMap<>();
+        String s = "456";
+        char d1 = 'c';
+        char d2= 'c';
+        System.out.println(d1==d2);
+        System.out.println(Integer.parseInt(s.substring(0,3)));
     }
 }
