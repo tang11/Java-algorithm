@@ -1,7 +1,7 @@
 package com.algorithm.bytype.sort;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/11/25
  */
 public class Solution {
