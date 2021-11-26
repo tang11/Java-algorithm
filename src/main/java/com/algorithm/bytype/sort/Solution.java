@@ -24,6 +24,8 @@ public class Solution {
         int[] A = new int[]{5, 2, 4, 6, 3, 1, 7};
         Solution solution = new Solution();
         System.out.print(solution.solution(A));
+        Long a = new Long(3445);
+        System.out.println(a==3445);
     }
 
 }
