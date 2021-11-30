@@ -28,11 +28,6 @@ import java.util.List;
 public class SubSet {
     List<List<Integer>> res = new ArrayList<>();
 
-    public List<List<Integer>> subsets(int[] nums) {
-        backtrack(new ArrayList<>(), nums, 0);
-        return res;
-    }
-
     void backtrack(List<Integer> path, int[] nums, int start) {
         res.add(new ArrayList<>(path));
         for (int i = start; i < nums.length; i++) {
