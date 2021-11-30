@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/11/29
  */
 public class SubSetII {
