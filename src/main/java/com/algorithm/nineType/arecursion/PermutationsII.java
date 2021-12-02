@@ -19,7 +19,7 @@ public class PermutationsII {
     public static void backtrack(List<List<Integer>> res, int[] nums, List<Integer> path, boolean[] visited) {
         if (path.size() == nums.length) {
             res.add(new ArrayList<>(path));
-            return;L
+            return;
         }
         for (int i = 0; i < nums.length; i++) {
             if (visited[i]) {
