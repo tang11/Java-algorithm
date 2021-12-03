@@ -1,7 +1,7 @@
 package com.algorithm.shoppe.medium;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/3
  */
 public class LargestNumber {

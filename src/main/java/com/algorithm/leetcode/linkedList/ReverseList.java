@@ -3,7 +3,7 @@ package com.algorithm.leetcode.linkedList;
 import com.algorithm.leetcode.commonEntity.ListNode;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/2
  */
 public class ReverseList {

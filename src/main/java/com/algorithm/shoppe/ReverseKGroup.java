@@ -1,7 +1,7 @@
 package com.algorithm.shoppe;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/3
  * 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
  *
