@@ -10,8 +10,8 @@ import com.algorithm.leetcode.commonEntity.ListNode;
  * 返回同样按升序排列的结果链表。
  */
 public class DeleteDuplicates {
-    public ListNode deleteDuplicates(ListNode head) {
-    }
+//    public ListNode deleteDuplicates(ListNode head) {
+//    }
 
     public static void main(String[] args) {
 
