@@ -2,9 +2,7 @@ package com.algorithm.shoppe.hard;
 
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @author tanglijuan
@@ -17,23 +15,49 @@ import java.util.PriorityQueue;
  */
 public class MaxSlidingWindow {
 
-    public static int[] maxSlidingWindow(int[] nums, int k) {
-        HashMap<Integer, Integer> window = new HashMap<>();
-        PriorityQueue<Integer> queue = new PriorityQueue<>(k - 1, Collections.reverseOrder());
-        for (int i = 0; i < k; i++) {
-            window.put(nums[i], i);
-            queue.offer(nums[i]);
+    static class MonotonicQueue {
+        MonotonicQueue() {
         }
-        int right = k;
-        int start = 0;
-        int index =0;
-        int[] res = new int[]{nums.length - k + 1};
-        while (right < nums.length) {
-            int cur = nums[right];
-            right++;
 
+        LinkedList<Integer> q = new LinkedList<>();
+
+        public void push(int n) {
+            //将小于n的元素全部删除
+            while (!q.isEmpty() && q.getLast() < n) {
+                q.pollLast();
+            }
+            q.addLast(n);
         }
-        return res;
+
+        public int max() {
+            return q.getFirst();
+        }
+
+        public void pop(int n) {
+            if (n == q.getFirst()) {
+                q.pollFirst();
+            }
+        }
+    }
+
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        MonotonicQueue window = new MonotonicQueue();
+        List<Integer> res = new ArrayList<>();
+        for (int i =0; i< nums.length; i++) {
+            if (i<k-1) {
+                window.push(nums[i]);
+            }else {
+                window.push(nums[i]);
+                res.add(window.max());
+                window.pop(nums[i-k+1]);
+            }
+        }
+
+        int[] arr = new int[res.size()];
+        for (int i = 0; i < res.size(); i++) {
+            arr[i] = res.get(i);
+        }
+        return arr;
     }
 
     public static void main(String[] args) {
