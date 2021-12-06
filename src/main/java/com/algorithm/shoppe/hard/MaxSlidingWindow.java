@@ -42,18 +42,19 @@ public class MaxSlidingWindow {
 
     public static int[] maxSlidingWindow(int[] nums, int k) {
         MonotonicQueue window = new MonotonicQueue();
+
+
         List<Integer> res = new ArrayList<>();
-        for (int i =0; i< nums.length; i++) {
-            if (i<k-1) {
+        for (int i = 0; i < nums.length; i++) {
+            if (i < k - 1) {
                 window.push(nums[i]);
-            }else {
+            } else {
                 window.push(nums[i]);
                 res.add(window.max());
-                window.pop(nums[i-k+1]);
+                window.pop(nums[i - k + 1]);
             }
         }
-
-        int[] arr = new int[res.size()];
+        int[] arr = new int[res.size() - 1];
         for (int i = 0; i < res.size(); i++) {
             arr[i] = res.get(i);
         }
