@@ -1,7 +1,7 @@
 package com.algorithm.bytedance;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/7
  */
 public class MySqrt {

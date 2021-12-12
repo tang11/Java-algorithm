@@ -3,7 +3,7 @@ package com.algorithm.shoppe;
 import java.util.Arrays;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/12
  */
 public class CoinChange {

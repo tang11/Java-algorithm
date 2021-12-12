@@ -3,7 +3,7 @@ package com.algorithm.shoppe;
 import java.util.Arrays;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/10
  * 统计所有小于非负整数 n 的质数的数量。
  */

@@ -3,7 +3,7 @@ package com.algorithm.shoppe;
 import java.util.Scanner;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/10
  */
 public class 质数分解 {
