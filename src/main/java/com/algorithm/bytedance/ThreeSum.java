@@ -1,6 +1,4 @@
-package com.algorithm.abytype.twosum;
-
-import com.algorithm.leetcode.tree.binaryTree.InsertIntoBST;
+package com.algorithm.bytedance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,9 +6,10 @@ import java.util.List;
 
 /**
  * @author tanglijuan
- * @date 2021/11/17
+ * @date 2021/12/7
  */
 public class ThreeSum {
+
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
@@ -21,12 +20,10 @@ public class ThreeSum {
                     tmp.add(nums[i]);
                     res.add(tmp);
                 }
-
             }
             while (i < nums.length - 1 && nums[i] == nums[i + 1]) {
                 i++;
             }
-
         }
         return res;
     }
@@ -58,8 +55,5 @@ public class ThreeSum {
         return result;
     }
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
-        System.out.println(threeSum(nums));
-    }
+
 }
