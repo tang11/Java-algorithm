@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author shenli
+ * @author tanglijuan
  * @date 2021/12/13
  */
 public class WordBreak {
