@@ -34,6 +34,19 @@ public class MoveZeroes {
         return nums;
     }
 
+
+    public static int[] moveZeroesSolutionThree(int[] nums) {
+        //[1,0,5,0] -> [1,5,]
+        int count = 0;
+        for (int cur = 0; cur < nums.length; cur++) {
+            if (nums[cur] != 0) {
+                int temp = nums[cur];
+                nums[cur] = nums[count];
+                nums[count++] = temp;
+            }
+        }
+        return nums;
+    }
     public static int[] moveZeroesSolutionTwo(int[] nums) {
        int length = nums.length;
        if (length <= 1) {

@@ -19,7 +19,7 @@ public class FindFirstandLastPositionofElementinSortedArray {
             } else {
                 int targetStart = mid;
                 int targetEnd = mid;
-                while (targetStart - 1 >= 0 && nums[targetStart - 1] == target && targetStart >= 0) {
+                while (targetStart - 1 >= 0 && nums[targetStart - 1] == target) {
                     targetStart--;
                 }
                 while (targetEnd + 1 < nums.length && nums[targetEnd + 1] == target && targetEnd >= 0) {

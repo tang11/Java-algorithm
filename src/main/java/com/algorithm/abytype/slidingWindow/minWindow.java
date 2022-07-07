@@ -120,5 +120,7 @@ public class minWindow {
         String s2 = "cbaebabacd";
         String p2 = "abc";
         System.out.println("**" + findAnagrams(s2, p2));
+
+
     }
 }

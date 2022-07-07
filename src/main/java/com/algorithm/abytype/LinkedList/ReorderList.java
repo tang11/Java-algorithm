@@ -1,6 +1,7 @@
 package com.algorithm.abytype.LinkedList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,4 +36,21 @@ public class ReorderList {
         //最后一步 否则是循环链表
         list.get(i).next = null;
     }
+
+    static int[] getIndicesOfItemWeights(int[] arr, int limit) {
+        // are you there
+        if(arr == null|| arr.length ==0) {
+            return new int[]{-1,-1};
+        }
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i < arr.length; i++) {
+            if(map.containsKey(limit - arr[i])) {
+                return new int[]{i,map.get(limit-arr[i])};
+
+            }
+            map.put(arr[i],i);
+        }
+        return new int[]{-1,-1};
+    }
 }
+
