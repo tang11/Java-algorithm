@@ -14,7 +14,6 @@ public class FindPeakElement {
         }
         return nums.length - 1;
     }
-
     public static int findPeakElement1(int[] nums) {
         int l = 0;
         int r = nums.length - 1;

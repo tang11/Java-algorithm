@@ -1,6 +1,8 @@
 package com.algorithm.abytype.slidingWindow;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -110,17 +112,41 @@ public class minWindow {
     }
 
     public static void main(String[] args) {
-        String s = "ADOBECODEBANC";
-        String t = "ABC";
-        String s1 = "a";
-        String t1 = "aa";
-        System.out.println(minWindow(s, t));
-        System.out.println(minWindow(s1, t1));
+        int[] array = new int[]{4, 6, 23, 10, 1, 3};
+        System.out.println(ArrayChallenge(array));
+    }
 
-        String s2 = "cbaebabacd";
-        String p2 = "abc";
-        System.out.println("**" + findAnagrams(s2, p2));
 
+    public static int ArrayChallenge(int[] arr) {
+        Arrays.sort(arr);
+        int maxNum = arr[arr.length - 1];
+        int tot = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            tot += arr[i];
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j) {
+                    tot += arr[j];
+                    if (tot == maxNum) {
+                        return 1;
+                    }
+                }
+            }
+
+            for (int k = 0; k < arr.length; k++) {
+                if (i != k) {
+                    tot -= arr[k];
+                    if (tot == maxNum) {
+                        return 0;
+                    }
+                }
+            }
+            tot = 0;
+        }
+
+        return 0;
 
     }
 }
+
+
